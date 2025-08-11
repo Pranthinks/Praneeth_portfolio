@@ -25,6 +25,10 @@
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --gradient-7: linear-gradient(135deg, #ff9a56 0%, #ff6b95 100%);
+            --gradient-8: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -91,6 +95,11 @@
 
         .logo:hover::after {
             transform: scaleX(1);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-1px);
         }
 
         .nav-links {
@@ -380,6 +389,18 @@
             background: linear-gradient(var(--bg-light), transparent);
         }
 
+        .about .section-header h2 {
+            color: var(--text-dark);
+        }
+
+        .about .section-header p {
+            color: var(--text-light);
+        }
+
+        .about .section-header::before {
+            background: var(--gradient-1);
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -518,27 +539,57 @@
         /* Enhanced Experience Section */
         .experience {
             padding: 8rem 0;
-            background: var(--white);
+            background: var(--gradient-exp);
             position: relative;
+            overflow: hidden;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="120" fill="url(%23a)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .experience .section-header h2 {
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .experience .section-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .experience .section-header::before {
+            background: var(--white);
         }
 
         .experience-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 3rem;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .experience-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             border-radius: 25px;
             padding: 3rem;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(50px);
+            opacity: 0;
         }
 
         .experience-card::before {
@@ -548,8 +599,23 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient-1);
-            transition: height 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        .experience-card:nth-child(1)::before {
+            background: var(--gradient-2);
+        }
+
+        .experience-card:nth-child(2)::before {
+            background: var(--gradient-3);
+        }
+
+        .experience-card:nth-child(3)::before {
+            background: var(--gradient-4);
+        }
+
+        .experience-card:nth-child(4)::before {
+            background: var(--gradient-7);
         }
 
         .experience-card:hover::before {
@@ -558,30 +624,51 @@
         }
 
         .experience-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience-card.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .experience-header {
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .experience-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-1);
+            width: 80px;
+            height: 80px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--white);
             flex-shrink: 0;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .experience-card:nth-child(1) .experience-icon {
+            background: var(--gradient-2);
+        }
+
+        .experience-card:nth-child(2) .experience-icon {
+            background: var(--gradient-3);
+        }
+
+        .experience-card:nth-child(3) .experience-icon {
+            background: var(--gradient-4);
+        }
+
+        .experience-card:nth-child(4) .experience-icon {
+            background: var(--gradient-7);
         }
 
         .experience-icon::before {
@@ -595,6 +682,11 @@
             animation: iconRotate 4s linear infinite;
         }
 
+        .experience-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
         @keyframes iconRotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -603,36 +695,72 @@
         .experience-icon i {
             position: relative;
             z-index: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         .experience-details h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .experience-details h4 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
 
         .experience-period {
-            background: var(--gradient-3);
             color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             display: inline-block;
             margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card:nth-child(1) .experience-period {
+            background: var(--gradient-2);
+        }
+
+        .experience-card:nth-child(2) .experience-period {
+            background: var(--gradient-3);
+        }
+
+        .experience-card:nth-child(3) .experience-period {
+            background: var(--gradient-4);
+        }
+
+        .experience-card:nth-child(4) .experience-period {
+            background: var(--gradient-7);
+        }
+
+        .experience-period::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .experience-period:hover::before {
+            left: 100%;
         }
 
         .experience-description {
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 2rem;
             font-size: 1.05rem;
         }
@@ -640,50 +768,93 @@
         .experience-achievements {
             list-style: none;
             padding: 0;
+            margin-bottom: 2rem;
         }
 
         .experience-achievements li {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
             font-weight: 500;
+            line-height: 1.6;
         }
 
         .experience-achievements li::before {
-            content: '✨';
+            content: '🚀';
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 1.2rem;
-            animation: sparkle 2s ease-in-out infinite;
+            font-size: 1.3rem;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(180deg); }
+        @keyframes bounce {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+            }
+            25% { 
+                transform: scale(1.1) rotate(-5deg); 
+            }
+            50% { 
+                transform: scale(1.2) rotate(0deg); 
+            }
+            75% { 
+                transform: scale(1.1) rotate(5deg); 
+            }
         }
 
         .experience-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-top: 2rem;
         }
 
-        .tech-tag {
-            background: var(--gradient-4);
+        .experience-tech .tech-tag {
             color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .tech-tag:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: var(--shadow-md);
+        .experience-card:nth-child(1) .tech-tag {
+            background: var(--gradient-2);
+        }
+
+        .experience-card:nth-child(2) .tech-tag {
+            background: var(--gradient-3);
+        }
+
+        .experience-card:nth-child(3) .tech-tag {
+            background: var(--gradient-4);
+        }
+
+        .experience-card:nth-child(4) .tech-tag {
+            background: var(--gradient-7);
+        }
+
+        .experience-tech .tech-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .experience-tech .tech-tag:hover::before {
+            left: 100%;
+        }
+
+        .experience-tech .tech-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
         /* Section styling */
@@ -2279,49 +2450,12 @@
             skillTagsObserver.observe(container);
         });
 
-        // Enhanced cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: rgba(99, 102, 241, 0.5);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    transition: transform 0.1s ease;
-                    transform: translate(-50%, -50%);
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            const cursor2 = document.querySelector('.cursor');
-            if (cursor2) {
-                cursor2.style.left = e.clientX + 'px';
-                cursor2.style.top = e.clientY + 'px';
-            }
-        });
-
-        // Add hover effects to interactive elements
+        // COMPLETELY REMOVED ALL CURSOR CODE - NO MORE BLUE DOT!
+        
+        // Simple hover effects without custom cursor
         document.querySelectorAll('a, button, .btn, .project-card, .experience-card, .skill-category').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(2)';
-                    cursor.style.background = 'rgba(99, 102, 241, 0.8)';
-                }
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursor.style.background = 'rgba(99, 102, 241, 0.5)';
-                }
+                el.style.cursor = 'pointer';
             });
         });
     </script>
