@@ -73,15 +73,16 @@
         /* Navigation */
         .navbar {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 0;
+            padding: 20px 5%;
             z-index: 1000;
             background: rgba(10, 14, 39, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 15px 30px;
             transition: all 0.3s ease;
         }
 
@@ -93,7 +94,10 @@
         .nav-container {
             display: flex;
             align-items: center;
-            gap: 30px;
+            justify-content: space-between; /* Change from gap: 30px */
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .logo {
@@ -162,7 +166,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 5%;
+            padding: 100px 5% 0; /* Add top padding */
             position: relative;
         }
 
@@ -451,97 +455,6 @@
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        /* Education Section */
-        .education-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            transform: translateX(-50%);
-        }
-
-        .education-item {
-            position: relative;
-            margin-bottom: 50px;
-            width: 50%;
-            padding: 30px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-
-        .education-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-        }
-
-        .education-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .education-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            box-shadow: 0 0 20px var(--glow);
-        }
-
-        .education-item:nth-child(odd)::before {
-            right: -35px;
-        }
-
-        .education-item:nth-child(even)::before {
-            left: -35px;
-        }
-
-        .education-item:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.1);
-        }
-
-        .education-degree {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--light);
-            margin-bottom: 10px;
-        }
-
-        .education-school {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .education-period {
-            color: var(--light-gray);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .education-details {
-            color: var(--light-gray);
-            font-size: 15px;
-            line-height: 1.6;
         }
 
         /* Skills Section */
@@ -1063,11 +976,11 @@
 
         @media (max-width: 768px) {
             .navbar {
-                top: 10px;
-                left: 10px;
-                right: 10px;
+                top: 0;
+                left: 0;
+                right: 0;
                 transform: none;
-                padding: 10px 20px;
+                padding: 15px 5%;
             }
 
             .nav-links {
@@ -1226,7 +1139,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -1326,44 +1238,6 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section fade-in">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Academic Journey</div>
-                <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">
-                    Building a strong foundation in computer science and machine learning
-                </p>
-            </div>
-            <div class="education-timeline">
-                <div class="education-item">
-                    <div class="education-degree">Master of Science in Computer Science</div>
-                    <div class="education-school">University of Technology</div>
-                    <div class="education-period">2023 - 2025 (Expected)</div>
-                    <div class="education-details">
-                        Specializing in Machine Learning Operations and Distributed Systems. 
-                        Thesis: "Automated MLOps Pipeline for Real-time Model Deployment and Monitoring"
-                        <br><strong>GPA:</strong> 3.8/4.0
-                        <br><strong>Relevant Coursework:</strong> Advanced Machine Learning, Distributed Systems, 
-                        Cloud Computing, Data Engineering
-                    </div>
-                </div>
-                <div class="education-item">
-                    <div class="education-degree">Bachelor of Technology in Computer Science</div>
-                    <div class="education-school">Indian Institute of Technology</div>
-                    <div class="education-period">2019 - 2023</div>
-                    <div class="education-details">
-                        Strong foundation in computer science fundamentals with focus on AI/ML applications.
-                        <br><strong>GPA:</strong> 3.7/4.0
-                        <br><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Machine Learning, 
-                        Database Systems, Software Engineering
-                        <br><strong>Final Project:</strong> Real-time Fraud Detection System using Deep Learning
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Skills Section -->
     <section id="skills" class="section fade-in">
